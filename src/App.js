@@ -1,7 +1,8 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {Navbar} from './components/navbar'
 import {HomePage} from './pages/home'
 import {AboutPage} from './pages/about'
-import {Navbar} from './components/navbar'
+import {OrderSummaryPage} from './pages/order-summary'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/order-summary" element={<OrderSummaryPage />} />
       </Routes>
     </BrowserRouter>
   )

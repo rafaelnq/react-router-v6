@@ -1,18 +1,17 @@
 import {useNavigate} from 'react-router-dom'
 
-export function HomePage() {
+export function OrderSummaryPage() {
   const navigate = useNavigate()
 
   function handleClick() {
-    navigate('/order-summary')
-    // navigate('/order-summary', {replace: true})
+    navigate(-1)
   }
 
   return (
     <>
-      <div>Home Page</div>
+      <div>Order confimed!</div>
       <button type="button" onClick={handleClick}>
-        Place order
+        Go back
       </button>
     </>
   )
