@@ -6,6 +6,9 @@ import {OrderSummaryPage} from './pages/order-summary'
 import {Products} from './pages/products'
 import {FeaturedProducts} from './pages/products/featured-products'
 import {NewProducts} from './pages/products/new-products'
+import {Users} from './pages/users'
+import {UserDetails} from './pages/users/details'
+import {Admin} from './pages/admin'
 import {NotFoundPage} from './pages/404'
 
 function App() {
@@ -20,6 +23,10 @@ function App() {
           <Route index element={<FeaturedProducts />} />
           <Route path="featured" element={<FeaturedProducts />} />
           <Route path="new" element={<NewProducts />} />
+        </Route>
+        <Route path="users" element={<Users />}>
+          <Route path=":userId" element={<UserDetails />} />
+          <Route path="admin" element={<Admin />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
