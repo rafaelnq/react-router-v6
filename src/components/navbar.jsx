@@ -1,6 +1,9 @@
 import {NavLink} from 'react-router-dom'
+import {useAuth} from '../contexts/auth-context'
 
 export function Navbar() {
+  const {user} = useAuth()
+
   function navLinkStyles({isActive}) {
     return {
       fontWeight: isActive ? 'bold' : 'normal',
@@ -19,6 +22,15 @@ export function Navbar() {
       <NavLink to="/products" style={navLinkStyles}>
         Products
       </NavLink>
+      {user ? (
+        <NavLink to="/profile" style={navLinkStyles}>
+          Profile
+        </NavLink>
+      ) : (
+        <NavLink to="/login" style={navLinkStyles}>
+          Login
+        </NavLink>
+      )}
     </nav>
   )
 }
