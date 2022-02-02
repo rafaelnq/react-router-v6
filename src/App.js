@@ -1,7 +1,8 @@
+import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {Navbar} from './components/navbar'
 import {HomePage} from './pages/home'
-import {AboutPage} from './pages/about'
+// import {AboutPage} from './pages/about'
 import {OrderSummaryPage} from './pages/order-summary'
 import {Products} from './pages/products'
 import {FeaturedProducts} from './pages/products/featured-products'
@@ -10,6 +11,7 @@ import {Users} from './pages/users'
 import {UserDetails} from './pages/users/details'
 import {Admin} from './pages/admin'
 import {NotFoundPage} from './pages/404'
+const LazyAbout = React.lazy(() => import('./pages/about'))
 
 function App() {
   return (
@@ -17,7 +19,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
+        <Route
+          path="about"
+          element={
+            <React.Suspense fallback="Loading...">
+              <LazyAbout />
+            </React.Suspense>
+          }
+        />
         <Route path="order-summary" element={<OrderSummaryPage />} />
         <Route path="products" element={<Products />}>
           <Route index element={<FeaturedProducts />} />
